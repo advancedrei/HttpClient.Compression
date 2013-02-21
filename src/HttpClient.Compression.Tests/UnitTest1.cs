@@ -10,14 +10,32 @@ namespace System.Net.Http.Compression.Tests
     [TestClass]
     public class UnitTest1
     {
+
+        private const string NuGetString = "https://nuget.org/api/v2/Packages()?$filter=tolower(Id)%20eq%20'microsoft.bcl.async'&$orderby=Id&$skip=0&$top=30";
+
         [TestMethod]
-        public async Task TestMethod1()
+        public async Task GetStringAsync()
         {
 
             var handler = new CompressedHttpClientHandler();
             var client = new HttpClient(handler);
-            var result = await client.GetStringAsync("https://nuget.org/api/v2/Packages()?$filter=tolower(Id)%20eq%20'microsoft.bcl.async'&$orderby=Id&$skip=0&$top=30");
+            var result = await client.GetStringAsync(NuGetString);
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public async Task SendAsyncWithHeaders()
+        {
+
+            var handler = new CompressedHttpClientHandler();
+            var client = new HttpClient(handler);
+            var message = new HttpRequestMessage(HttpMethod.Get, new Uri(NuGetString, UriKind.RelativeOrAbsolute));
+            var result = await client.SendAsync(message);
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Content);
+            Assert.IsNotNull(result.Content.Headers);
+        }
+
+
     }
 }
