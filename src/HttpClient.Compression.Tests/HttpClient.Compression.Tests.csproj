@@ -6,8 +6,8 @@
     <ProjectGuid>{77F7DB23-37A9-4330-AB1F-CBD63ECAE4C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Net.Http.Compression.Tests</RootNamespace>
-    <AssemblyName>System.Net.Http.Compression.Tests</AssemblyName>
+    <RootNamespace>AdvancedREI.Net.Http.Compression.Tests</RootNamespace>
+    <AssemblyName>AdvancedREI.Net.Http.Compression.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

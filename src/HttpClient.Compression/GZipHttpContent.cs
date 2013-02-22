@@ -1,10 +1,9 @@
 ﻿using System.IO;
+using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Threading.Tasks;
 
-
-namespace System.Net.Http.Compression
+namespace AdvancedREI.Net.Http.Compression
 {
 
     public sealed class GZipHttpContent : HttpContent
@@ -23,13 +22,13 @@ namespace System.Net.Http.Compression
             m_stream = new Ionic.Zlib.GZipStream(stream, Ionic.Zlib.CompressionMode.Decompress);
         }
 
+
         public GZipHttpContent(Stream stream, HttpContentHeaders headers) : this(stream)
         {
-            var contentType = typeof(HttpContent);
-            var fieldInfo = contentType.GetField("headers", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (fieldInfo != null)
+            //RWM: Changed based on recommendation of @davkean: http://www.twitter.com/davkean/status/304977154515533824
+            foreach (var pair in headers)
             {
-                fieldInfo.SetValue(this, headers);
+                Headers.TryAddWithoutValidation(pair.Key, pair.Value);
             }
         }
 

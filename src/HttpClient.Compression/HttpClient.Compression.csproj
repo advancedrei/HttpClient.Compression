@@ -8,8 +8,8 @@
     <ProjectGuid>{EE51912B-D171-45A1-A651-3C0C708838EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Net.Http.Compression</RootNamespace>
-    <AssemblyName>System.Net.Http.Compression</AssemblyName>
+    <RootNamespace>AdvancedREI.Net.Http.Compression</RootNamespace>
+    <AssemblyName>AdvancedREI.Net.Http.Compression</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile88</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

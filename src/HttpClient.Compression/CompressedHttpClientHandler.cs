@@ -1,8 +1,9 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.Net.Http.Compression
+namespace AdvancedREI.Net.Http.Compression
 {
 
     public class CompressedHttpClientHandler : HttpClientHandler

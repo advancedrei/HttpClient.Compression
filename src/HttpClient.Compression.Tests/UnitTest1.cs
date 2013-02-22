@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using AdvancedREI.Net.Http.Compression;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net.Http.Compression;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 
-namespace System.Net.Http.Compression.Tests
+namespace AdvancedREI.Net.Http.Compression.Tests
 {
     [TestClass]
     public class UnitTest1

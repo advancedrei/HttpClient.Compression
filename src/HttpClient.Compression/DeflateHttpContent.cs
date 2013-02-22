@@ -1,9 +1,9 @@
 ﻿using System.IO;
+using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Threading.Tasks;
 
-namespace System.Net.Http.Compression
+namespace AdvancedREI.Net.Http.Compression
 {
 
     public sealed class DeflateHttpContent : HttpContent
@@ -24,11 +24,9 @@ namespace System.Net.Http.Compression
 
         public DeflateHttpContent(Stream stream, HttpContentHeaders headers) : this(stream)
         {
-            var contentType = typeof(HttpContent);
-            var fieldInfo = contentType.GetField("headers", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (fieldInfo != null)
+            foreach (var pair in headers)
             {
-                fieldInfo.SetValue(this, headers);
+                Headers.TryAddWithoutValidation(pair.Key, pair.Value);
             }
         }
 
