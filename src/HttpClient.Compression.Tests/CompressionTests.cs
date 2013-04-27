@@ -1,18 +1,17 @@
-﻿using System;
-using System.Threading.Tasks;
-using AdvancedREI.Net.Http.Compression;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace AdvancedREI.Net.Http.Compression.Tests
 {
+
     [TestClass]
-    public class UnitTest1
+    public class CompressionTests
     {
 
-        private const string NuGetString = "https://nuget.org/api/v2/Packages()?$filter=tolower(Id)%20eq%20'microsoft.bcl.async'&$orderby=Id&$skip=0&$top=30";
+        private const string NuGetString =
+            "https://nuget.org/api/v2/Packages()?$filter=tolower(Id)%20eq%20'microsoft.bcl.async'&$orderby=Id&$skip=0&$top=30";
 
         [TestMethod]
         public async Task GetStringAsync()
@@ -27,7 +26,6 @@ namespace AdvancedREI.Net.Http.Compression.Tests
         [TestMethod]
         public async Task SendAsyncWithHeaders()
         {
-
             var handler = new CompressedHttpClientHandler();
             var client = new HttpClient(handler);
             var message = new HttpRequestMessage(HttpMethod.Get, new Uri(NuGetString, UriKind.RelativeOrAbsolute));
@@ -36,7 +34,6 @@ namespace AdvancedREI.Net.Http.Compression.Tests
             Assert.IsNotNull(result.Content);
             Assert.IsNotNull(result.Content.Headers);
         }
-
 
     }
 }
