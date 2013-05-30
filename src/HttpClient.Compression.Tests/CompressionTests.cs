@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Ionic.Zlib;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -35,5 +36,14 @@ namespace AdvancedREI.Net.Http.Compression.Tests
             Assert.IsNotNull(result.Content.Headers);
         }
 
+        [TestMethod]
+        public async Task GetStreamStreams()
+        {
+            var handler = new CompressedHttpClientHandler();
+            var client = new HttpClient(handler);
+            var result = await client.GetStreamAsync(NuGetString);
+
+            Assert.IsInstanceOfType(result, typeof(GZipStream));
+        }
     }
 }
