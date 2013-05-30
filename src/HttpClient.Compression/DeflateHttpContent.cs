@@ -30,6 +30,15 @@ namespace AdvancedREI.Net.Http.Compression
             }
         }
 
+        protected override Task<Stream> CreateContentReadStreamAsync()
+        {
+            TaskCompletionSource<Stream> source = new TaskCompletionSource<Stream>();
+
+            source.TrySetResult(m_stream);
+
+            return source.Task;
+        }
+
         protected override Task SerializeToStreamAsync(System.IO.Stream stream, System.Net.TransportContext context)
         {
             return m_stream.CopyToAsync(stream);

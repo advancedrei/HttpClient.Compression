@@ -31,6 +31,15 @@ namespace AdvancedREI.Net.Http.Compression
                 Headers.TryAddWithoutValidation(pair.Key, pair.Value);
             }
         }
+        
+        protected override Task<Stream> CreateContentReadStreamAsync()
+        {
+            TaskCompletionSource<Stream> source = new TaskCompletionSource<Stream>();
+
+            source.TrySetResult(m_stream);
+
+            return source.Task;
+        }
 
         protected override Task SerializeToStreamAsync(System.IO.Stream stream, System.Net.TransportContext context)
         {
